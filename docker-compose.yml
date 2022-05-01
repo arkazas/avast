@@ -1,0 +1,45 @@
+version: '3'
+services:
+  avast:
+    build: ./
+    container_name: avast
+    volumes:
+      - '.:/avast'
+    networks:
+      - avast
+    depends_on:
+      - redis
+
+  avast-composer:
+    image: composer/composer
+    container_name: avast-composer
+    networks:
+      - avast
+    volumes:
+      - ".:/avast"
+    working_dir: /avast
+    command: install
+    depends_on:
+      - avast
+
+  redis:
+    image: 'redis:alpine'
+    container_name: avast-redis
+    ports:
+      - '6479:6379'
+    volumes:
+      - 'redis-data:/data'
+    networks:
+      - avast
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      retries: 3
+      timeout: 5s
+
+networks:
+  avast:
+    driver: bridge
+
+volumes:
+  redis-data:
+    driver: local

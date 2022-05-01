@@ -1,0 +1,47 @@
+{
+    "name": "okukla/avast-test-project",
+    "type": "project",
+    "description": "Avast test project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Olexandr Kukla",
+            "email": "kukla.os@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4.24",
+        "ext-redis": "*",
+        "josiasmontag/laravel-redis-mock": "^1.3",
+        "predis/predis": "^1.1.10",
+        "symfony/dom-crawler": "^5.4.6"
+    },
+    "require-dev": {
+        "brianium/paratest": "^6.3",
+        "mockery/mockery": "^1.5.0",
+        "phpunit/phpunit": "^9.5.20"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/phpunit --testdox --verbose"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

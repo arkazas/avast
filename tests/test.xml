@@ -1,0 +1,9 @@
+<config>
+    <subdomains>
+        <subdomain>http://secureline.tools.avast.com</subdomain>
+    </subdomains>
+
+	<cookies>
+        <cookie name="dlp-avast" host="amazon">mmm_amz_dlp_777_ppc_m</cookie>
+	</cookies>
+</config>
